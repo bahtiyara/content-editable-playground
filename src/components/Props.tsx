@@ -1,7 +1,7 @@
 import "./Props.css"
 
 type PropsType = {
-    data: Instance[]
+    data: Prop[][]
 }
 
 export default function Props(props: PropsType) {
@@ -16,7 +16,7 @@ export default function Props(props: PropsType) {
 }
 
 type PropItemType = {
-    data: Instance
+    data: Prop[]
     index: number
 }
 

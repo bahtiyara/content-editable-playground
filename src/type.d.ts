@@ -1,9 +1,11 @@
 /// <reference types="react-scripts" />
 
+type Prop = {
+    key: string
+    value: string
+}
+
 type Instance = {
     value: string
-    props: {
-        key: string
-        value: string
-    }[]
+    props: Prop[]
 }

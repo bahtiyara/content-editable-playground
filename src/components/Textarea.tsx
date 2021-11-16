@@ -1,18 +1,28 @@
 import "./Textarea.css"
 
 type TextareaType = {
-    data: Instance[]
+    data: string[]
+    onChange: any
 }
 
 export default function Textarea(props: TextareaType) {
+    const { data, onChange } = props
+
     return (
         <div
+            onBeforeInputCapture={(e: any) => {
+                e.preventDefault()
+                console.log(e.data)
+            }}
             contentEditable
             suppressContentEditableWarning
             className="textarea"
+            onInput={(e) => {
+                onChange((e.target as HTMLElement).innerText)
+            }}
         >
-            {props.data.map((p, index) => (
-                <Row key={index} text={p.value} />
+            {data.map((text, index) => (
+                <Row key={index} text={text} />
             ))}
         </div>
     )
@@ -23,5 +33,8 @@ type RowType = {
 }
 
 function Row(props: RowType) {
-    return <div>{props.text}</div>
+    if (!props) {
+        return <div className="row"></div>
+    }
+    return <div className="row">{props.text}</div>
 }
